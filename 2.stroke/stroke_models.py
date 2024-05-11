@@ -1,6 +1,27 @@
 from datetime import datetime
+from enum import Enum
 from pydantic import BaseModel, Field
 
+class EverMarriedType(str, Enum):
+    yes = "Yes"
+    no = "No"
+
+class WorkType(str, Enum):
+    govt_job = "Govt_job"
+    never_worked = "Never_worked"
+    private = "Private"
+    self_employed = "Self-employed"
+    children = "children"
+
+class ResidenceType(str, Enum):
+    rural = "Rural"
+    urban = "Urban"
+
+class SmokingStatus(str, Enum):
+    unknown = "Unknown"
+    formerly_smoked = "formerly smoked"
+    never_smoked = "never smoked"
+    smokes = "smokes"
 
 class Patient(BaseModel):
     id: int
@@ -8,12 +29,12 @@ class Patient(BaseModel):
     age: int
     hypertension: bool
     heart_disease: bool
-    ever_married: str
-    work_type: str
-    residence_type: str = Field(alias="Residence_type")
+    ever_married: EverMarriedType
+    work_type: WorkType
+    residence_type: ResidenceType = Field(alias="Residence_type")
     avg_glucose_level: float
     bmi: float
-    smoking_status: str
+    smoking_status: SmokingStatus
 
 class PatientBatch(BaseModel):
     hospital: str
