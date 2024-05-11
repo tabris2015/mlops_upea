@@ -16,7 +16,7 @@ app = FastAPI(title="Students API")
 
 
 @app.post("/students/grades")
-def get_student_averages(students: list[Student]):
+def calculate_student_averages(students: list[Student]):
     final_grades = []
     for student in students:
         accum = sum([g.grade for g in student.grades])
@@ -26,4 +26,4 @@ def get_student_averages(students: list[Student]):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("validacion:app", reload=True)
+    uvicorn.run("validation_api:app", reload=True)
