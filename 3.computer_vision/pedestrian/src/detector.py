@@ -26,8 +26,6 @@ class PedestrianDetector:
     def predict_image(self, image_array, threshold):
         results = self.model(image_array, conf=threshold)[0]
         labels = results.boxes.cls.tolist()
-        # pedestrian_indexes = [i for i in range(len(label_list)) if label_list[i] == "person"]
-        # labels = [results.names[i] for i in results.boxes.cls.tolist()]
         indexes = [i for i in range(len(labels)) if labels[i] == 0]     # 0 = "person"
         boxes = [[int(v) for v in box] for i, box in enumerate(results.boxes.xyxy.tolist()) if i in indexes]
         confidences = [c for i, c in enumerate(results.boxes.conf.tolist()) if i in indexes]
