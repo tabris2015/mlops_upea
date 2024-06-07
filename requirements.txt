@@ -6,3 +6,4 @@ jupyter==1.0.0
 scikit-learn==1.4.2
 mediapipe==0.10.14
 ultralytics==8.2.12
+mlflow==2.13.0

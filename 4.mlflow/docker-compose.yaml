@@ -1,0 +1,5 @@
+services:
+  mlflow-server:
+    build: ./mlflow_docker
+    ports:
+      - "5000:5000"
